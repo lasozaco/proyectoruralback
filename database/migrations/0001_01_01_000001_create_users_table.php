@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->engine = "InnoDB";
-            $table->unsignedBigInteger('role_id')->unsigned();
+            $table->unsignedBigInteger('role_id')->unsigned()->default('2');
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('role_id')->references('id')->on('rols')->onDelete('cascade');
+            $table->foreign('role_id')->references('id')->on('rols');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

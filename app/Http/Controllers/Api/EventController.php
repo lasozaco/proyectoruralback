@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Event;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
+use Illuminate\Support\Js;
 
 class EventController extends Controller
 {
@@ -32,9 +34,16 @@ class EventController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Event $event): Event
+    public function show(int $id): JsonResponse
     {
-        return $event;
+        $event = Event::where('institution_id', $id)->first();
+        $event->institution=$event->institution;
+        unset($event->institution_id);
+        unset($event->created_at);
+        unset($event->updated_at);
+        unset($event->institution->user_id);
+
+        return response()->json($event);
     }
 
     /**

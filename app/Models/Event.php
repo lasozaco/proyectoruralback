@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Event
@@ -21,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Event extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -33,19 +35,19 @@ class Event extends Model
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
-    public function ()
+    public function institution()
     {
-        return $this->belongsTo(\App\Models\::class, 'institution_id', 'id');
+        return $this->belongsTo(\App\Models\Institution::class, 'institution_id', 'id');
     }
-    
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return HasMany
      */
     public function multimedia()
     {
         return $this->hasMany(\App\Models\Multimedia::class, 'id', 'event_id');
     }
-    
+
 }

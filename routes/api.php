@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\InstitutionController;
 use App\Http\Controllers\Api\RolController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
@@ -16,6 +16,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('roles', RolController::class)->names('roles');
     Route::resource('institution', InstitutionController::class)->names('institution');
+
+    Route::resource('event', EventController::class)->names('event');
 });
 
 Route::get('institutions', [InstitutionController::class, 'indexPublic']);
+
+Route::get('events/{id}', [EventController::class, 'show']);

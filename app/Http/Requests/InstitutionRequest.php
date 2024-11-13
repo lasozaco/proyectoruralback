@@ -29,7 +29,9 @@ class InstitutionRequest extends FormRequest
 			'user_id' => 'required',
 			'name' => 'required|string',
 			'address' => 'required|string',
-			'email' => 'required|email'
+			'email' => 'required|email',
+            'description' => 'required|string',
+            'logo' => 'required|string',
         ];
     }
 
@@ -48,6 +50,8 @@ class InstitutionRequest extends FormRequest
             "name.required" => "El nombre es requerido",
             "address.required" => "La dirección es requerida",
             "email.required" => "El correo es requerido",
+            "description.required" => "La descripción es requerida",
+            "logo.required" => "El logo es requerido",
         ];
     }
 }

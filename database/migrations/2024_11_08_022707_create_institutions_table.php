@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('email');
+            $table->longText('description');
+            $table->string('logo');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

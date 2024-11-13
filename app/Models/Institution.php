@@ -29,7 +29,14 @@ class Institution extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['user_id', 'name', 'address', 'email'];
+    protected $fillable = [
+        'user_id',
+        'name',
+        'address',
+        'email',
+        'description',
+        'logo'
+    ];
 
     protected $hidden = [
         'created_at',
