@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Multimedia;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\MultimediaRequest;
 use Illuminate\Http\Response;
@@ -47,10 +48,10 @@ class MultimediaController extends Controller
         return $multimedia;
     }
 
-    public function destroy(Multimedia $multimedia): Response
+    public function destroy(int $id): JsonResponse
     {
-        $multimedia->delete();
-
-        return response()->noContent();
+        return response()->json([
+            (new \App\Models\Multimedia)->findOrFail($id)->delete()
+        ], Response::HTTP_OK);
     }
 }

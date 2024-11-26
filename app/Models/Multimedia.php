@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Multimedia extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -28,7 +28,11 @@ class Multimedia extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['event_id', 'url', 'type'];
+    protected $fillable = [
+        'event_id',
+        'url',
+        'type'
+    ];
 
 
     /**
@@ -38,5 +42,5 @@ class Multimedia extends Model
     {
         return $this->belongsTo(\App\Models\Event::class, 'event_id', 'id');
     }
-    
+
 }

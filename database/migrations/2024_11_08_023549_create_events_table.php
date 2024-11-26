@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->timestamps();
-            $table->foreign('institution_id')->references('id');
+            $table->foreign('institution_id')->references('id')->on('institutions');
         });
     }
 

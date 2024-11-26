@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\InstitutionResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class InstitutionController extends Controller
@@ -22,7 +23,8 @@ class InstitutionController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $institutions = Institution::paginate();
+        $user = Auth::user();
+        $institutions = Institution::where('user_id', $user->id)->get();
         foreach ($institutions as $institution) {
             $institution->user = User::find($institution->user_id);
             $institution->user->rol = Rol::find($institution->user->role_id)->name;

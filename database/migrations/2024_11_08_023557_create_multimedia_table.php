@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('type');
             $table->timestamps();
-            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 
