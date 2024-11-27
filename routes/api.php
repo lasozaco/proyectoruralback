@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\InstitutionController;
 use App\Http\Controllers\Api\MultimediaController;
